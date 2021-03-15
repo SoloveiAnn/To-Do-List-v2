@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class TodoInputComponent implements OnInit {
   private todoText: string;
+  userText = new FormControl(); 
 
   constructor(private todoService: TodoService) { 
     this.todoText = '';
@@ -18,6 +20,10 @@ export class TodoInputComponent implements OnInit {
   private addTodo(): void{
     this.todoService.addTodo(this.todoText);
     this.todoText = '';
+  }
+
+  showError() {
+    setTimeout(() => ("Start with a letter, please"), 5000);
   }
 
 }

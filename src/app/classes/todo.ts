@@ -7,6 +7,7 @@ export class Todo {
     constructor (id:number, text:string){
         this.id = id;
         this.text = text;
+        this.completed = false;
         
     }
 }
