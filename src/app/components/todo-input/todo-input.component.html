@@ -1,14 +1,21 @@
 
 <div class="container px-2">
+  <form [formGroup]="taskForm">
   <div class="row">
     <div class="col">
   <input class="form-control" (keyup.enter)="addTodo()" type="text" placeholder="Add your tasks here"  [(ngModel)]="todoText"
-   name="todoText" value="{{ todoText }}" ngModel pattern = "^[-a-zA-Z0-9-()]+(\s+[-a-zA-Z0-9-()]+)*$" required/>
-  <em *ngIf="todoText.invalid; then showError()" class="alert"></em>
-</div>
+   name="todoText" formControlName="newTodo" value="{{ todoText }}" ngModel
+   [ngClass]="{'is-invalid': (taskForm.get('newTodo').touched || taskForm.get('newTodo').dirty) && !taskForm.get('newTodo').valid }" />
+   <span class="invalid-feedback">
+    <span *ngIf="taskForm.get('newTodo').errors?.maxlength">Only 300 characters </span>
+    <span *ngIf="taskForm.get('newTodo').errors?.required">Please enter your task</span>
+    <span *ngIf="taskForm.get('newTodo').errors?.pattern">Start with a letter, Please</span>
+</span>
+  </div>
 <div class="col">
-  <button class="btn" type="submit" [disabled]="todoText.invalid" (click)="addTodo()"> <i class="fas fa-plus fa-2x"> </i> </button>
+  <button class="btn" type="submit" [disabled]="!taskForm.get('newTodo').valid" (click)="addTodo()"> <i class="fas fa-plus fa-2x"> </i> </button>
 </div>
 </div>
+</form>
 </div>
 

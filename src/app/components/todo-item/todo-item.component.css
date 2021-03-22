@@ -8,4 +8,9 @@ i {
 .container {
     margin: auto;
 }
-
+.tasktext{
+    font-style: normal; 
+}
+#defaultCheck1:checked ~ .tasktext {
+    font-style: italic;
+}

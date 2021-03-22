@@ -10,6 +10,7 @@ import { TodoService } from 'src/app/services/todo.service';
 export class TodoItemComponent implements OnInit {
   @Input()
   private todo: Todo;
+ 
 
   constructor(private todoService: TodoService) { }
 
