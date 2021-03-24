@@ -1,12 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TodoService } from 'src/app/services/todo.service';
-import { Task } from 'src/app/classes/task'
+import { Task } from 'src/app/classes/task';
+import { trigger, style, animate, transition, state } from '@angular/animations';
 
 @Component({
   selector: 'app-todo-input',
+  animations: [
+    trigger(
+      'inOutAnimation', 
+      [
+        transition(
+          ':enter', 
+          [
+            style({  opacity: 1 }),
+            animate('5s ease-out', 
+                    style({  opacity: 0 }))
+          ]
+        ),
+        transition(
+          ':leave', 
+          [
+            style({ opacity: 0 }),
+            animate('5s ease-in', 
+                    style({  opacity: 1 }))
+          ]
+        )
+      ]
+    )
+  ],
   templateUrl: './todo-input.component.html',
-  styleUrls: ['./todo-input.component.css']
+  styleUrls: ['./todo-input.component.css'],
+  
 })
 export class TodoInputComponent implements OnInit {
   taskForm: FormGroup;
@@ -27,10 +52,6 @@ export class TodoInputComponent implements OnInit {
   private addTodo(): void{
     this.todoService.addTodo(this.todoText);
     this.todoText = '';
-  }
-
-  showError() {
-    setTimeout(() => ("Start with a letter, please"), 5000);
   }
 
 }

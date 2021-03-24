@@ -7,9 +7,9 @@
    name="todoText" formControlName="newTodo" value="{{ todoText }}" ngModel
    [ngClass]="{'is-invalid': (taskForm.get('newTodo').touched || taskForm.get('newTodo').dirty) && !taskForm.get('newTodo').valid }" />
    <span class="invalid-feedback">
-    <span *ngIf="taskForm.get('newTodo').errors?.maxlength">Only 300 characters </span>
-    <span *ngIf="taskForm.get('newTodo').errors?.required">Please enter your task</span>
-    <span *ngIf="taskForm.get('newTodo').errors?.pattern">Start with a letter, Please</span>
+    <span *ngIf="taskForm.get('newTodo').errors?.maxlength" [@inOutAnimation]>Only 300 characters </span>
+    <span *ngIf="taskForm.get('newTodo').errors?.required" [@inOutAnimation]>Please enter your task</span>
+    <span *ngIf="taskForm.get('newTodo').errors?.pattern" [@inOutAnimation]> Start with a letter, Please</span>
 </span>
   </div>
 <div class="col">

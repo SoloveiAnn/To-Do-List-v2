@@ -8,6 +8,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TodoInputComponent } from './components/todo-input/todo-input.component';
 import { TodoService } from './services/todo.service';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -22,6 +23,7 @@ import { TodoItemComponent } from './components/todo-item/todo-item.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     TodoService
